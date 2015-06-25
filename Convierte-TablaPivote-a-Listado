@@ -1,9 +1,15 @@
 function convertTable() {
+   //Convierte tablas de horarios en listado de materia y profesor 
+   //permite escribir los cambios una hoja diferente a la entrada
+   
+    var hojaDestino = 'Hoja 19';
+
+   
    
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   
   
-  var hojaActual = 'Hoja 19';
+ 
 
   //var sheet = ss.getSheets()[1];
 
