@@ -1,0 +1,46 @@
+function convertTable() {
+   
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  
+  
+  var hojaActual = 'Hoja 19';
+
+  //var sheet = ss.getSheets()[1];
+
+  var sheet = ss.getSheetByName(hojaActual);
+  
+  //data = sheet.getDataRange().getValues();
+
+  var  data = sheet.getRange('B2:F14').getValues();
+  
+var salida=[];
+  Logger.log(data);
+
+  var keys =['LUNES','MARTES','MIERCOLES','JUEVES','VIERNES'];
+  var horas =['07-08','08-09','09-10','10-11','11-12',
+              '12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20'];
+  
+var salida=[];
+
+  for(var i = 0; i<=data.length-1;i++){
+   
+      for(var j = 0; j <= 4; j++){
+
+          salida.push([keys[j],"'"+horas[i],data[i][j],'EDIF.L']);
+     }
+   
+  }     
+  
+Logger.log(salida);
+  //Save JSON to different, spreasheet, which can serve as export data API  
+  var doc = SpreadsheetApp.openById("16jGvRjiBl4EHiPA5tz4vLvqgAvr4VrV7e5bItpd0io0");  
+  
+   var ss = doc.getSheetByName(hojaActual);
+
+  var range2 = ss.getRange("A1:D65");
+
+   range2.setValues(salida);
+
+
+} 
+ 
